@@ -2,10 +2,12 @@
   <div class="home-page">
     <header>
       <h1>VUTTR</h1>
-      <h2>Very Useful Tools to Remember</h2>
+      <h3>Very Useful Tools to Remember</h3>
     </header>
 
     <div class="content">
+      <ToolsCard />
+      <ToolsCard />
       <ToolsCard />
     </div>
    </div>

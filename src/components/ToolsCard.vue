@@ -1,13 +1,13 @@
 <template>
     <div class="tools">
-        <h1 class="tools__name">Notion</h1>
+        <h4 class="tools__name">Notion</h4>
         <img class="tools__delete" src="../assets/images/close-icon.svg" />
 
         <div class="tools__content">
             <p class="tools__description">
                 All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized.
             </p>
-            <p class="tools__tags">#organization #planning</p>
+            <p class="tools__tags body-smallest">#organization #planning</p>
         </div>
     </div>
 </template>
