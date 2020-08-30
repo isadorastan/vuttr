@@ -28,7 +28,7 @@ export default {
 
 <style scoped lang="less">
 .tools {
-    max-width: 750px;
+    // max-width: 90%;
     padding: 10px 10px;
     text-align: left;
     background: #ffffff 0% 0% no-repeat padding-box;

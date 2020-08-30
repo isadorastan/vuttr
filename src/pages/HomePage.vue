@@ -5,12 +5,15 @@
             <h3>Very Useful Tools to Remember</h3>
         </header>
 
-        <div class="home__search">
-            <Search @on-search="onSearch" />
-            <div class="only-tags">
-                <input type="checkbox" id="tag" name="tag" v-model="onlyTags" />
-                <label for="tag">Search in tags only</label>
+        <div class="home__controlls">
+            <div class="home__search">
+                <Search @on-search="onSearch" />
+                <div class="only-tags">
+                    <input type="checkbox" id="tag" name="tag" v-model="onlyTags" />
+                    <label for="tag">Search in tags only</label>
+                </div>
             </div>
+            <Button cta="+ Add" />
         </div>
 
         <div class="home__content">
@@ -22,6 +25,7 @@
 <script>
 import ToolsCard from '../components/ToolsCard';
 import Search from '../components/Search';
+import Button from '../components/Button';
 
 import axios from 'axios';
 
@@ -29,7 +33,8 @@ export default {
     name: 'HomePage',
     components: {
         ToolsCard,
-        Search
+        Search,
+        Button
     },
     data: () => {
         return {
@@ -67,9 +72,9 @@ export default {
         }
     },
     watch: {
-      onlyTags() {
-        this.displayedList = this.toolsList;
-      }
+        onlyTags() {
+            this.displayedList = this.toolsList;
+        }
     }
 };
 </script>
@@ -77,7 +82,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .home {
-    max-width: 800px;
+    // background: purple;
+    max-width: 900px;
     margin: 0 auto;
     text-align: left;
 
@@ -102,6 +108,16 @@ export default {
                 margin-left: 10px;
             }
         }
+    }
+
+    &__controlls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__content {
+        margin-bottom: 70px;
     }
 }
 </style>

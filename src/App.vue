@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <HomePage/>
+    <p class="body-smallest">Made by Isadora 💙 2020</p>
   </div>
 </template>
 
@@ -16,13 +17,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin-bottom: 15px;
 }
 </style>
