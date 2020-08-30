@@ -1,13 +1,15 @@
 <template>
     <div class="tools">
-        <h4 class="tools__name">Notion</h4>
+        <h4 class="tools__name">{{ tool.title }}</h4>
         <img class="tools__delete" src="../assets/images/close-icon.svg" />
 
         <div class="tools__content">
             <p class="tools__description">
-                All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized.
+                {{ tool.description }}
             </p>
-            <p class="tools__tags body-smallest">#organization #planning</p>
+            <ul class="tools__tags">
+                <li class="body-smallest" v-for="tag in tool.tags" :key="tag">#{{ tag }}</li>
+            </ul>
         </div>
     </div>
 </template>
@@ -16,17 +18,16 @@
 export default {
     name: 'ToolsCard',
     props: {
-        // tool: {
-        //     type: Object,
-        //     required: true
-        // }
+        tool: {
+            type: Object,
+            required: true
+        }
     }
 };
 </script>
 
 <style scoped lang="less">
 .tools {
-    background: red;
     max-width: 750px;
     padding: 10px 10px;
     text-align: left;
@@ -48,6 +49,22 @@ export default {
         cursor: pointer;
         width: 14px;
         height: 14px;
+    }
+
+    &__name {
+        margin-bottom: 10px;
+    }
+
+    &__tags {
+        list-style: none;
+        display: flex;
+        margin-top: 15px;
+
+        li {
+            & + li {
+                margin-left: 8px;
+            }
+        }
     }
 }
 </style>
