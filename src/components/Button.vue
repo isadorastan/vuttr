@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button @click="onClick" :type="type">
       {{cta}}
   </button>
 </template>
@@ -11,6 +11,14 @@ export default {
         cta: {
             type: String,
             required: true
+        },
+        type: {
+            type: String
+        }
+    },
+    methods: {
+        onClick() {
+            this.$emit('click');
         }
     }
 }
