@@ -1,5 +1,8 @@
 <template>
     <div class="home">
+        <Loading :show="loading" />
+        <ToolsCreate ref="toolCreate" @on-tool-created="loadTools" />
+        <ToolsDeletion ref="toolDelete" @on-tool-deleted="loadTools"/>
         <header>
             <h1>VUTTR</h1>
             <h3>Very Useful Tools to Remember</h3>
@@ -13,11 +16,11 @@
                     <label for="tag">Search in tags only</label>
                 </div>
             </div>
-            <Button cta="+ Add" />
+            <Button cta="+ Add" @click="addNewTool" />
         </div>
 
         <div class="home__content">
-            <ToolsCard v-for="tool in displayedList" :key="tool.id" :tool="tool" />
+            <ToolsCard v-for="tool in displayedList" :key="tool.id" :tool="tool" @on-delete-click="onDeleteClick"/>
         </div>
     </div>
 </template>
@@ -26,6 +29,9 @@
 import ToolsCard from '../components/ToolsCard';
 import Search from '../components/Search';
 import Button from '../components/Button';
+import ToolsCreate from '../components/ToolsCreate';
+import ToolsDeletion from '../components/ToolsDeletion';
+import Loading from '../components/Loading';
 
 import axios from 'axios';
 
@@ -34,25 +40,41 @@ export default {
     components: {
         ToolsCard,
         Search,
-        Button
+        Button,
+        ToolsCreate,
+        ToolsDeletion,
+        Loading
     },
     data: () => {
         return {
             toolsList: [],
             displayedList: [],
-            onlyTags: false
+            onlyTags: false,
+            loading: false
         };
     },
     props: {
         msg: String
     },
     created() {
-        axios.get('http://localhost:3000/tools').then(response => {
-            this.toolsList = response.data;
-            this.displayedList = this.toolsList;
-        });
+        this.loadTools();
     },
     methods: {
+        loadTools() {
+            this.loading = true;
+            axios
+                .get('http://localhost:3000/tools')
+                .then(response => {
+                    setTimeout(() => {
+                        this.toolsList = response.data.reverse();
+                        this.displayedList = this.toolsList;
+                        this.loading = false;
+                    }, 1000);
+                })
+                .catch(error => {
+                    console.error('Error loading tools list', error);
+                });
+        },
         onSearch(query) {
             if (this.onlyTags) {
                 this.displayedList = this.toolsList.filter(tool => {
@@ -69,6 +91,12 @@ export default {
                 const titleLowerCase = tool.title.toLowerCase();
                 return titleLowerCase.includes(queryLowerCase);
             });
+        },
+        addNewTool() {
+            this.$refs.toolCreate.openCreateModal();
+        },
+        onDeleteClick(id) {
+            this.$refs.toolDelete.openDeleteModal(id);
         }
     },
     watch: {
@@ -79,10 +107,8 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .home {
-    // background: purple;
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
