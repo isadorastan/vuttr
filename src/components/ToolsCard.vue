@@ -1,7 +1,7 @@
 <template>
     <div class="tools">
         <h4 class="tools__name">{{ tool.title }}</h4>
-        <img class="tools__delete" src="../assets/images/close-icon.svg" @click="onDeleteClick"/>
+        <img class="tools__delete" src="../assets/images/close-icon.svg" @click="onDeleteClick" />
 
         <div class="tools__content">
             <p class="tools__description">
@@ -66,6 +66,11 @@ export default {
         margin-top: 15px;
 
         li {
+            color: #365df0;
+            background: #e1e7fd;
+            padding: 2px 5px;
+            border-radius: 8px;
+
             & + li {
                 margin-left: 8px;
             }
