@@ -1,16 +1,21 @@
 <template>
-    <div class="custom-input">
+    <div :class="['custom-input', valid ? '' : 'custom-input__error']">
         <img :src="iconPath" v-if="iconName" />
+        <label v-if="label">{{label}}</label>
         <input
             :placeholder="placeholder"
             @keyup.enter="onSubmit"
             :value="value"
             @input="onInput"
         />
+        <span v-if="!valid" class="error">{{validation}}</span>
     </div>
 </template>
 
 <script>
+
+import '../mixins/globalMixins';
+
 export default {
     name: 'Input',
     props: {
@@ -23,6 +28,16 @@ export default {
         value: {
             type: String,
             required: true
+        },
+        label: {
+            type: String
+        },
+        valid: {
+            type: Boolean,
+            default: true
+        },
+        validation: {
+            type: String
         }
     },
     data: () => {
@@ -64,6 +79,8 @@ export default {
 .custom-input {
     position: relative;
     margin: 15px 0;
+    display: flex;
+    flex-direction: column;
 
     img {
         position: absolute;
@@ -74,8 +91,14 @@ export default {
         height: 20px;
 
         & + input {
-            padding-left: 55px;
+            padding-left: 50px;
         }
+    }
+
+    label {
+        color: #170C3A;
+        font-size: 1.42rem;
+        font-weight: 600;
     }
 
     input {
@@ -86,8 +109,8 @@ export default {
         border: 1px solid #ebeaed;
         border-radius: 5px;
         height: 50px;
-        width: 403px;
-        padding-right: 20px;
+        width: 100%;
+        padding: 0 20px;
         color: #170c3a;
 
         &::placeholder {
@@ -97,6 +120,19 @@ export default {
 
         &:focus {
             outline: none !important;
+        }
+    }
+
+    .error {
+        color: #F95E5A;
+        text-align: right;
+    }
+
+    &__error {
+        input {
+            background: #FEEFEE 0% 0% no-repeat padding-box;
+            border: 1px solid #F95E5A;
+            color: #F95E5A;
         }
     }
 }
