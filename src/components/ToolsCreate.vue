@@ -5,6 +5,7 @@
             <h5>+ Add new tool</h5>
                 <Input
                     v-model="formData.toolName.value"
+                    placeholder="Insert tool name"
                     :label="formData.toolName.label"
                     :valid="formData.toolName.valid"
                     :validation="formData.toolName.validation.message"
@@ -12,6 +13,7 @@
 
                 <Input
                     v-model="formData.toolLink.value"
+                    placeholder="Insert tool link"
                     :label="formData.toolLink.label"
                     :valid="formData.toolLink.valid"
                     :validation="formData.toolLink.validation.message"
@@ -19,6 +21,7 @@
 
                 <Input
                     v-model="formData.toolDescription.value"
+                    placeholder="Insert tool description"
                     :label="formData.toolDescription.label"
                     :valid="formData.toolDescription.valid"
                     :validation="formData.toolDescription.validation.message"
@@ -26,6 +29,7 @@
 
                 <Input
                     v-model="formData.toolTags.value"
+                    placeholder="Insert tool tags"
                     :label="formData.toolTags.label"
                     :valid="formData.toolTags.valid"
                     :validation="formData.toolTags.validation.message"
@@ -110,7 +114,7 @@ export default {
             return this.name.valid && this.link.valid && this.description.valid && this.tags.value;
         },
         formatTags() {
-            return this.tags.value.split(' ');
+            return this.tags.value.trim().split(' ');
         }
     },
     methods: {
@@ -166,4 +170,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="less" scoped>
+    .tools-create {
+        h5 {
+            margin-bottom: 25px;
+        }
+    }
+</style>

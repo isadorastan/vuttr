@@ -60,5 +60,14 @@ export default {
     &__close:focus {
         cursor: pointer;
     }
+
+    @media (max-width: 600px) {
+
+        &__content {
+            width: unset;
+            margin: 10% 10px;
+            padding: 20px;
+        }
+    }
 }
 </style>

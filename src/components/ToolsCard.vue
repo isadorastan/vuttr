@@ -33,7 +33,6 @@ export default {
 
 <style scoped lang="less">
 .tools {
-    // max-width: 90%;
     padding: 10px 10px;
     text-align: left;
     background: #ffffff 0% 0% no-repeat padding-box;
@@ -61,7 +60,7 @@ export default {
     }
 
     &__description {
-        color: #8F8A9B;
+        color: #8f8a9b;
     }
 
     &__tags {
@@ -77,6 +76,15 @@ export default {
 
             & + li {
                 margin-left: 8px;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        &__tags {
+            flex-wrap: wrap;
+            li {
+                margin-bottom: 5px;
             }
         }
     }

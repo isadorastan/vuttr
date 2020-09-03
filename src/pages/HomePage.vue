@@ -2,7 +2,7 @@
     <div class="home">
         <Loading :show="loading" />
         <ToolsCreate ref="toolCreate" @on-tool-created="loadTools" />
-        <ToolsDeletion ref="toolDelete" @on-tool-deleted="loadTools"/>
+        <ToolsDeletion ref="toolDelete" @on-tool-deleted="loadTools" />
         <header>
             <h1>VUTTR</h1>
             <h3>Very Useful Tools to Remember</h3>
@@ -19,8 +19,10 @@
             <Button cta="+ Add" @click="addNewTool" />
         </div>
 
+        <div class="mobile-add" @click="addNewTool">+</div>
+
         <div class="home__content">
-            <ToolsCard v-for="tool in displayedList" :key="tool.id" :tool="tool" @on-delete-click="onDeleteClick"/>
+            <ToolsCard v-for="tool in displayedList" :key="tool.id" :tool="tool" @on-delete-click="onDeleteClick" />
         </div>
     </div>
 </template>
@@ -112,6 +114,10 @@ export default {
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
+    
+    .mobile-add {
+        display: none;
+    }
 
     header {
         text-align: left;
@@ -121,6 +127,7 @@ export default {
     &__search {
         display: flex;
         align-items: center;
+        flex-grow: 1;
 
         .only-tags {
             margin-left: 15px;
@@ -132,7 +139,7 @@ export default {
             label {
                 font-size: 1.42rem;
                 margin-left: 10px;
-                color: #8F8A9B;
+                color: #8f8a9b;
             }
         }
     }
@@ -141,10 +148,58 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
     }
 
     &__content {
         margin-bottom: 70px;
+    }
+
+    @media (max-width: 600px) {
+        margin: 0 15px;
+
+        &__controlls {
+            flex-direction: column;
+            align-items: flex-end;
+            margin-bottom: 20px;
+
+            button {
+                display: none;
+            }
+        }
+
+        &__search {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+
+            .custom-input {
+                margin: 0;
+                width: 100%;
+            }
+
+            label {
+                width: 100%;
+            }
+        }
+
+        .mobile-add {
+            width: 60px;
+            height: 60px;
+            background: #365df0;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            color: white;
+            z-index: 2;
+            display: flex;
+            font-size: 30px;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
     }
 }
 </style>
