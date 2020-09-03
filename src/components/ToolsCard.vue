@@ -60,6 +60,10 @@ export default {
         margin-bottom: 10px;
     }
 
+    &__description {
+        color: #8F8A9B;
+    }
+
     &__tags {
         list-style: none;
         display: flex;

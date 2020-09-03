@@ -132,6 +132,7 @@ export default {
             label {
                 font-size: 1.42rem;
                 margin-left: 10px;
+                color: #8F8A9B;
             }
         }
     }
