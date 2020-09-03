@@ -6,7 +6,7 @@
             <p>Are you sure you want to remove tools?</p>
 
             <div class="action-buttons">
-                <Button cta="Cancel" @click="onCloseModal" />
+                <Button cta="Cancel" @click="onCloseModal" className="secondary"/>
                 <Button cta="Yes, remove" @click="deleteTool" />
             </div>
         </Modal>

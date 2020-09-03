@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" :type="type">
+  <button @click="onClick" :type="type" :class="[className]">
       {{cta}}
   </button>
 </template>
@@ -13,6 +13,9 @@ export default {
             required: true
         },
         type: {
+            type: String
+        },
+        className: {
             type: String
         }
     },
@@ -49,5 +52,9 @@ export default {
             outline: none !important;
         }
 
+        &.secondary {
+            background: #E1E7FD;
+            color: #365DF0;
+        }
     }
 </style>
