@@ -14,8 +14,6 @@
 
 <script>
 
-import '../mixins/globalMixins';
-
 export default {
     name: 'Input',
     props: {
