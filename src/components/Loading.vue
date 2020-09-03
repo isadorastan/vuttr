@@ -19,7 +19,7 @@ export default {
 <style lang="less" scoped>
 .loading {
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;

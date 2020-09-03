@@ -193,7 +193,7 @@ export default {
             bottom: 50px;
             right: 30px;
             color: white;
-            z-index: 2;
+            z-index: 1;
             display: flex;
             font-size: 30px;
             align-items: center;
