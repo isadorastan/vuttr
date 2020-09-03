@@ -108,6 +108,9 @@ export default {
         },
         isFormValid() {
             return this.name.valid && this.link.valid && this.description.valid && this.tags.value;
+        },
+        formatTags() {
+            return this.tags.value.split(' ');
         }
     },
     methods: {
@@ -133,13 +136,14 @@ export default {
                 title: this.name.value,
                 link: this.link.value,
                 description: this.description.value,
-                tags: this.tags.value
-            }).then(response => {
+                tags: this.formatTags
+            }).then(() => {
                 setTimeout(() => {
                     // Only to simulate the request time and show loading;
                     this.loading = false;
                     this.clearForm();
                     this.$emit('on-tool-created');
+                    this.show = false;
                 }, 3000);
             }).catch(error => {
                 console.error(error);
