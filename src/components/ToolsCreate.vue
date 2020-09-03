@@ -115,6 +115,7 @@ export default {
     },
     methods: {
         openCreateModal() {
+            this.clearForm();
             this.show = true;
         },
         onClose() {
@@ -154,6 +155,12 @@ export default {
             this.link.value = '';
             this.description.value = '';
             this.tags.value = '';
+
+            this.name.valid = true;
+            this.link.valid = true;
+            this.description.valid = true;
+            this.tags.valid = true;
+            
         }
     }
 };
