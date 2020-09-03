@@ -1,7 +1,7 @@
 <template>
     <div class="tools">
         <h4 class="tools__name">{{ tool.title }}</h4>
-        <img class="tools__delete" src="../assets/images/close-icon.svg" />
+        <img class="tools__delete" src="../assets/images/close-icon.svg" @click="onDeleteClick"/>
 
         <div class="tools__content">
             <p class="tools__description">
@@ -21,6 +21,11 @@ export default {
         tool: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        onDeleteClick() {
+            this.$emit('on-delete-click', this.tool.id);
         }
     }
 };
